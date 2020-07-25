@@ -1,0 +1,16 @@
+{
+  "name": "samplebackenddeployment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node server.js",
+    "test": "mocha",
+    "cover": "nyc --reporter =html --reporter =lcov mocha"
+  },
+  "author": "Vamsi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
