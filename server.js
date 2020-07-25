@@ -1,3 +1,7 @@
+const express = require('express')
+const http = require('http')
+const socketio = require('socket.io')
+
 //My express app
 const app = express();
 //The http server on which it runs
