@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const path = require('path')
 
+//for heroku port
+const SERVER_PORT = process.env.PORT || 5656
+
 app.use('/public' , express.static(path.join(__dirname, '/public')))
 
 app.get('/' , (req , res) => {
@@ -10,6 +13,4 @@ app.get('/' , (req , res) => {
 })
 
 
-app.listen('5656' , ()=>{
-    console.log(`Listening at localhost:5656`)
-})
+app.listen( SERVER_PORT , ()=>{console.log(`Listening at localhost:5656`)})
