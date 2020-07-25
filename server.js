@@ -1,29 +1,23 @@
-const express = require('express')
-const app = express()
-const path = require('path')
-
-const http = require('http')
-const socketio = require('socket.io')
-
-//creating an experss app into http app
-const server = http.createServer(app)
-//attaching socket to the sever
+//My express app
+const app = express();
+//The http server on which it runs
+const server = http.Server(app)
+//The socket.io server
 const io = socketio(server)
 
-io.on('connection' , (socket) => {
-        console.log(`Connected to the socket id: ${socket.id}` )
+
+const PORT = process.env.PORT || 2323;
+
+io.on('connection', function (socket) {
+    console.log("Socket created :" + socket.id)
+
+    socket.on('play', function(data) {
+        io.emit('play', data)
+    })
 })
 
+app.use('/', express.static(__dirname + "/public"))
 
-//for heroku port
-const SERVER_PORT = process.env.PORT || 5656
-
-app.use('/public' , express.static(path.join(__dirname, '/public')))
-
-app.get('/' , (req , res) => {
-    res.send(`<h1>Hello</h1>
-            <p>This is Basic Backend file for Deployment</p>`)
+server.listen(PORT, () => {
+    console.log(`Server started at http://localhost:${PORT}`)
 })
-
-
-app.listen( SERVER_PORT , ()=>{console.log(`Listening at localhost:5656`)})
