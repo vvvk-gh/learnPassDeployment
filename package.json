@@ -4,18 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "node server.js",
+    "start": "node server.js",
     "test": "mocha",
     "cover": "nyc --reporter =html --reporter =lcov mocha"
   },
-  
   "author": "Vamsi",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
   },
- "engines": {
-    "node" :"14.5.0" ,
+  "engines": {
+    "node": "14.5.0",
     "npm": "6.14.7"
   }
 }
